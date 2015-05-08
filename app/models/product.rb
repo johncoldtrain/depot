@@ -1,5 +1,9 @@
 class Product < ActiveRecord::Base
 
+	has_many :line_items
+
+	before_destroy :ensure_not_referenced_by_any_line_item
+
 	validates :title, :description, :image_url, presence: true
 
 	validates :title, uniqueness: true
@@ -16,5 +20,17 @@ class Product < ActiveRecord::Base
 		Product.order(:updated_at).last
 	end
 	
+
+	private
+
+	def ensure_not_referenced_by_any_line_item
+		if line_items.empty?
+			return true
+		else
+			erros.add(:base, 'Line Items present')
+			return false
+		end
+	end
+
 
 end
