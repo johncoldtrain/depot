@@ -43,3 +43,7 @@ group :development, :test do
   gem 'spring'
 end
 
+# +++++++++    Added during development    ++++++++++++
+
+  # Additional jquery library
+  gem 'jquery-ui-rails'
