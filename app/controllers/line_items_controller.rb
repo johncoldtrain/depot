@@ -33,7 +33,10 @@ class LineItemsController < ApplicationController
 
     respond_to do |format|
       if @line_item.save
-        format.html { redirect_to @line_item.cart }
+        format.html { redirect_to root_url }
+        
+        format.js # To work with AJAX Requests (remote: true) in views
+
         format.json { render :show, status: :created, location: @line_item }
       else
         format.html { render :new }
