@@ -37,7 +37,7 @@ class OrdersControllerTest < ActionController::TestCase
       post :create, order: { address: @order.address, email: @order.email, name: @order.name, pay_type: @order.pay_type }
     end
 
-    assert_redirected_to order_path(assigns(:order))
+    assert_redirected_to root_path(assigns(:order))
   end
 
   # ------  #SHOW  ------
