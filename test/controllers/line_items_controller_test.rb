@@ -47,7 +47,7 @@ class LineItemsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-# ------  #GET  ------
+# ------  #EDIT  ------
   test "should get edit" do
     get :edit, id: @line_item
     assert_response :success
