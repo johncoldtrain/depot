@@ -1,6 +1,8 @@
 class LineItemsController < ApplicationController
   include CurrentCart
 
+  skip_before_action :authorize, only: :create
+
   before_action :set_cart, only: [:create]
 
   before_action :set_line_item, only: [:show, :edit, :update, :destroy]
@@ -34,7 +36,7 @@ class LineItemsController < ApplicationController
     respond_to do |format|
       if @line_item.save
         format.html { redirect_to root_url }
-        
+
         # To work with AJAX Requests (remote: true) in views
         format.js { @current_item = @line_item }
 

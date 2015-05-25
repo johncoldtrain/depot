@@ -1,4 +1,7 @@
 class CartsController < ApplicationController
+
+  skip_before_action :authorize, only: [:create, :update, :destroy]
+
   before_action :set_cart, only: [:show, :edit, :update, :destroy]
 
   rescue_from ActiveRecord::RecordNotFound, with: :invalid_cart
@@ -81,8 +84,3 @@ class CartsController < ApplicationController
       redirect_to root_url, notice: 'Invalid cart'
     end
 end
-
-
-
-
-
